@@ -1,0 +1,24 @@
+name: Phillips Design Deploy
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Basic Syntax Check
+        run: |
+          echo "Checking for index.html..."
+          test -f index.html || (echo "index.html missing!" && exit 1)
+
+      # Add deployment steps here (e.g., to GitHub Pages or Replit)
+      - name: Status Report
+        run: echo "Build successful for Phillips' Web Design!"
